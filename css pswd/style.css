@@ -10,8 +10,80 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #000000;
+    background: linear-gradient(to right, rgb(128, 0, 255), rgb(0, 255, 221));
 }
+.gradient-animation {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to right, rgb(128, 0, 255), rgb(0, 255, 221)); /* Initial gradient */
+    animation: animateGradient 18s linear infinite;
+    transition: 2s all ease-in-out;
+  }
+  
+  @keyframes animateGradient {
+    
+    50% {
+      background: linear-gradient(to right, rgb(158, 158, 110), rgb(96, 0, 128)); /* Midway gradient */
+    }
+    100% {
+      background: linear-gradient(to right, rgb(128, 0, 255), rgb(0, 255, 221)); /* Back to initial gradient */
+    }
+  }
+  
+
+  .text-animation {
+    overflow: hidden;
+    border-right: 2px solid rgb(41, 12, 103); /* Simulating cursor */
+    white-space: nowrap; /* Ensures the text stays on a single line */
+    animation: animateText 3s steps(20) ;
+  }
+  
+  @keyframes animateText {
+    from {
+      width: 0; /* Starts with no width */
+    }
+    to {
+      width: 30%; /* Ends with full width */
+    }
+  }
+  
+  /* Optional cursor blinking animation */
+  .text-animation {
+    overflow: hidden;
+    border-right: 2px solid black; /* Simulating cursor */
+    white-space: nowrap; /* Ensures the text stays on a single line */
+    animation: animateText 4s steps(20) infinite;
+  }
+  
+  @keyframes animateText {
+    from {
+      width: 0; /* Starts with no width */
+    }
+    to {
+      width: 38%; /* Ends with full width */
+    }
+  }
+  
+  /* Optional cursor blinking animation */
+  .text-animation::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 2px;
+    animation: cursorBlink 1s infinite;
+  }
+  
+  @keyframes cursorBlink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  
 .container{
     width:  400px   ;
     padding: 10px;
@@ -21,9 +93,44 @@
     box-shadow: -1px 1px 15px 5px #5f49c3;;
     border-radius: 5px;
     margin-top: 10px;
+
+    border: 8px double transparent;
+    animation: borderAnimate 5s linear infinite;
+  }
+  
+  @keyframes borderAnimate {
+    0% {
+      border-color: rgb(255, 0, 204);
+      
+    }
+    25% {
+      border-color: rgb(183, 0, 255);
+      
+    }
+    
+    55% {
+      border-color: rgb(0, 170, 255);
+      
+    }
+
+
+    65% {
+      border-color: rgb(0, 4, 255);
+      
+    }
+    75% {
+      border-color: rgb(38, 255, 0);
+   
+    }
+   
+    100% {
+      border-color: rgb(172, 15, 15);
+      
+    }
+  }
      
 
-}
+
 .container .row {
     display: flex;
     align-items: center;
@@ -36,9 +143,14 @@
     max-width: auto;
     display: block;
     background-color: white;
-    font-size: 22px;
+    font-size: 19px;
     padding: 10px;
     border-radius: 4px;
+     font-family: monospace;
+ font-weight: 800;
+ line-height: 20px;
+ color: #3d2b7d;
+ 
    
 }
 .row .right input[type="number" i] {
@@ -58,10 +170,16 @@
     outline: 0;
     border: 0;
     padding: 10px;
-    background-color: #34495e;
+    background-color: #3d2b7d;
     color: white;
     margin-top: 10px;
     border-radius: 5px;
+    transition: 0.3s all ease-in-out;
+}
+#btn:hover{
+    box-shadow: -1px 1px 15px 5px #47425a;
+    background: rgb(82, 27, 140);
+    color: whitesmoke;
 }
 
 @media (max-width:600px){
@@ -83,13 +201,25 @@
        
     }
 
+    .text-animation{
+        font-size: 16px;
+
+    }
+ @keyframes animateText {
+    from {
+      width: 0; /* Starts with no width */
+    }
+    to {
+      width: 90%; /* Ends with full width */
+    }
+  }
 
 }
 @media (max-width:350px){
     .container{
         width:  300px  ;
         padding: 20px;
-        box-shadow: -1px 1px 50px 5px whitesmoke;;
+        box-shadow: -1px 1px 10px 2px whitesmoke;;
         
          
     
